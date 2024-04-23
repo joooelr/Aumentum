@@ -43,7 +43,7 @@ public string Title => "Title";
             set { location = value; }
         }
 
-        public string Url
+public string Url => "WebUI/Framework/homepage.aspx";
         {
             get { return "WebUI/Framework/homepage.aspx"; }
         }
