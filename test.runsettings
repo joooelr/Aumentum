@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <!-- NUnit adapter -->  
+  <NUnit>
+    <NumberOfTestWorkers>24</NumberOfTestWorkers>
+  </NUnit>
+  <!-- General run configuration -->
+  <RunConfiguration>
+    <EnvironmentVariables>
+      <!-- For debugging selectors, it's recommend to set the following environment variable -->
+      <DEBUG>pw:api</DEBUG>
+      <URLDEV>https://vswebmipor01.manatron.com/CA-Riverside-Dev-SCL</URLDEV>
+      <UserDev>Joelm</UserDev>
+      <PasswordDev>a</PasswordDev>
+      <URL>https://x-ca-riv-static-main-1.aws.aumentumtech.com/Aumentum/</URL>
+      <User>AutoAdmin</User>
+      <Password>AutoAdmin</Password>
+    </EnvironmentVariables>
+  </RunConfiguration>
+  <!-- Playwright -->  
+  <Playwright>
+    <BrowserName>chromium</BrowserName>
+    <ExpectTimeout>180000</ExpectTimeout>
+    <LaunchOptions>
+      <Headless>false</Headless>
+      <Channel>msedge</Channel>
+    </LaunchOptions>
+  </Playwright>
+</RunSettings>
