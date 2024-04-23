@@ -35,7 +35,7 @@ namespace PlaywrightTests.Framework.Pages
         public string Title
         {
             get { return "Title"; }
-        }
+public string Title => "Title";
 
         public string Location
         {
