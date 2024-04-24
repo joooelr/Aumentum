@@ -41,38 +41,10 @@ namespace Aumentum.Framework.Pages
 
         public Dropdown UseCode => new Dropdown(_frameLocator, _frameLocator.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgFloors_ctl00_ctl04_cbUseCode"));
 
-        public ILocator EffectiveYearBuilt => _frameLocator.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgFloors_ctl00_ctl04_TB_EffectiveYearBuilt");  
+        public ILocator EffectiveYearBuilt => _frameLocator.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgFloors_ctl00_ctl04_TB_EffectiveYearBuilt");
 
 
-        public async Task AddNew()
-        {
-            await _frameLocator.GetByRole(AriaRole.Cell, new() { Name = "Add New", Exact = true }).Locator("span").Nth(1).ClickAsync();
-        }
-
-        ///await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgUses_ctl00_ctl02_ctl00_btnAddUse").GetByText("Add New").ClickAsync();
-        //   //await buildingFrame.Locator("#ctl00_ContentPlaceHolder_btnFloor span").First.ClickAsync();
-        //   await buildingFrame.GetByRole(AriaRole.Button, new() { Name = "OK" }).ClickAsync();
-        //   await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgFloors_ctl00_ctl04_cbFloorType_Input").ClickAsync();
-        //   //await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgFloors_ctl00_ctl04_cbUseCode_Arrow").ClickAsync();
-        //   /// <summary>
-        //   /// await buildingFrame.GetByText("Bank Barn, General Purpose").ClickAsync();
-        //   /// </summary>
-        //   /// <returns></returns>
-
-        //   await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgFloors_ctl00_ctl04_TB_YearRemodeled").ClickAsync();
-        //   await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgUseSizes_ctl00_ctl07_txtSize").ClickAsync();
-        //   await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgUseSizes_ctl00_ctl07_txtSize").FillAsync("2");
-        //   await buildingFrame.Locator("body").ClickAsync();
-        //   await buildingFrame.GetByRole(AriaRole.Button, new() { Name = "Finish" }).ClickAsync();
-        //   await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgUseSizes_ctl00_ctl09_txtSize").ClickAsync();
-        //   await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgUseSizes_ctl00_ctl09_txtSize").FillAsync("2");
-        //   await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgUseSizes_ctl00_ctl10_txtSize").ClickAsync();
-        //   await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgUseSizes_ctl00_ctl10_txtSize").FillAsync("2");
-        //   await buildingFrame.Locator("#RAD_SPLITTER_PANE_CONTENT_ctl00_ContentPlaceHolder_ucChildEdit_rpBuildingDetailEditBottom").ClickAsync();
-        //   await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgUseSizes_ctl00_ctl11_txtSize").ClickAsync();
-        //   await buildingFrame.Locator("#ctl00_ContentPlaceHolder_ucChildEdit_dtgUseSizes_ctl00_ctl11_txtSize").FillAsync("2");
-        //   await buildingFrame.Locator("#RAD_SPLITTER_PANE_CONTENT_ctl00_ContentPlaceHolder_ucChildEdit_rpBuildingDetailEditBottom").ClickAsync();
-        //   await page.GetByRole(AriaRole.Button, new() { Name = "Save" }).ClickAsync();
+        public async Task AddNew() => await _frameLocator.GetByRole(AriaRole.Cell, new() { Name = "Add New", Exact = true }).Locator("span").Nth(1).ClickAsync();
 
         public async Task<RPAMainPage> OK()
         {

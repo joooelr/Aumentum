@@ -16,7 +16,6 @@ namespace Aumentum.Framework.Pages
         private ILocator SimpleSearch => _page.Locator("#simplesearch");
         private ILocator SearchButton => _page.GetByRole(AriaRole.Button, new() { Name = "Search" });
         private ILocator NextButton => _page.GetByText("Next");
-
         private Table ResultsTable => new Table(_page, _page.Locator("#results"));
         
        public async Task<RPAMainPage> OpenPin(string pin)

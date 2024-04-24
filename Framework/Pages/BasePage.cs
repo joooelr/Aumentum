@@ -32,21 +32,10 @@ namespace Aumentum.Framework.Pages
             return Task.FromResult(page);
         }
 
-        public string Title
-        {
-            get { return "Title"; }
-public string Title => "Title";
+        public string Title => "Title";
 
-        public string Location
-        {
-            get { return location; }
-            set { location = value; }
-        }
+        public string Location =>   "Location";
 
-public string Url => "WebUI/Framework/homepage.aspx";
-        {
-            get { return "WebUI/Framework/homepage.aspx"; }
-        }
-
+        public string Url => "WebUI/Framework/homepage.aspx";
     }
 }

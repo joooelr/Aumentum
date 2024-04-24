@@ -15,24 +15,12 @@ namespace Aumentum.Framework.Pages
 
         private ILocator AddNewBuilding => _page.Locator("#ctl00_ContentPlaceHolder_pvAppraisalSite_uc_pvBuildings_uc_dtgBuildingMain_ctl00_ctl02_ctl00_btnAddBuilding");
 
-        public Table LegalPartyTable
-        {
-            get
-            {
-                return new Table(_page, _page.Locator("#ctl00_ContentPlaceHolder_pvAppraisalSite_uc_pvLand_uc_dtgLandMain_ctl00"));                
-            }
-        }
+        public Table LegalPartyTable => new Table(_page, _page.Locator("#ctl00_ContentPlaceHolder_pvAppraisalSite_uc_pvLand_uc_dtgLandMain_ctl00"));
 
-        public async Task GoTabAsync(string tab)
-        {
-            await _page.GetByRole(AriaRole.Link, new() { Name = tab }).ClickAsync();
-        }
+        public async Task GoTabAsync(string tab) => await _page.GetByRole(AriaRole.Link, new() { Name = tab }).ClickAsync();
 
-        public async Task GoSubTabAsync(string subTab)
-        {
-            await _page.GetByRole(AriaRole.Link, new() { Name = subTab, Exact = true }).ClickAsync();
-        }
-        
+        public async Task GoSubTabAsync(string subTab) => await _page.GetByRole(AriaRole.Link, new() { Name = subTab, Exact = true }).ClickAsync();
+
         public async Task<LandFrame> OpenNewLandAsync()
         {
             await AddNewLand.ClickAsync();
@@ -48,9 +36,6 @@ namespace Aumentum.Framework.Pages
             return buildingFrame;
         }
 
-        internal async Task SaveAsync()
-        {
-            await _page.GetByRole(AriaRole.Button, new() { Name = "Save" }).ClickAsync();
-        }
+        internal async Task SaveAsync() => await _page.GetByRole(AriaRole.Button, new() { Name = "Save" }).ClickAsync();
     }
 }

@@ -33,12 +33,9 @@ namespace Aumentum.Framework.Pages
 
         public Dropdown ChangeReason => new Dropdown(_frameLocator, _frameLocator.Locator("#ctl00_ContentPlaceHolder_divChangeReason"));
         
-        public ILocator OKButton => _frameLocator.GetByRole(AriaRole.Button, new() { Name = "OK" });        
+        public ILocator OKButton => _frameLocator.GetByRole(AriaRole.Button, new() { Name = "OK" });
 
-        public async Task AddNew()
-        {
-            await _frameLocator.GetByRole(AriaRole.Cell, new() { Name = "Add New", Exact = true }).Locator("span").Nth(1).ClickAsync();
-        }
+        public async Task AddNew() => await _frameLocator.GetByRole(AriaRole.Cell, new() { Name = "Add New", Exact = true }).Locator("span").Nth(1).ClickAsync();
 
         public async Task<RPAMainPage> OK()
         {
