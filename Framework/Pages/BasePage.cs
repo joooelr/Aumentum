@@ -35,7 +35,7 @@ namespace Aumentum.Framework.Pages
         public string Title
         {
             get { return "Title"; }
-        }
+public string Title => "Title";
 
         public string Location
         {
@@ -43,7 +43,7 @@ namespace Aumentum.Framework.Pages
             set { location = value; }
         }
 
-        public string Url
+public string Url => "WebUI/Framework/homepage.aspx";
         {
             get { return "WebUI/Framework/homepage.aspx"; }
         }
