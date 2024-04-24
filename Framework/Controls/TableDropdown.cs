@@ -1,30 +1,21 @@
 using Microsoft.Playwright;
 
-namespace PlaywrightTests.Framework.Pages
+namespace Aumentum.Framework.Pages
 {
-    public class TableDropdown
+    public class TableDropdown : UITableElement
     {
-        private ILocator _dropdownLocator;
-        private IPage _page;
-
-        private IFrameLocator _frame;
-
-        public TableDropdown(IPage page, ILocator locator)
+        public TableDropdown(IPage page, ILocator locator) : base(page, locator)
         {
-            _dropdownLocator = locator;
-            _page = page;
         }
 
-        public TableDropdown(IFrameLocator frame, ILocator locator)
+        public TableDropdown(IFrameLocator frame, ILocator locator) : base(frame, locator)
         {
-            _dropdownLocator = locator;
-            _frame = frame;
         }
 
         public async Task SelectOptionFrame(string option)
         {   
-            await _dropdownLocator.Locator("table input").ClickAsync();         
-            await _frame.GetByText(option, new() { Exact = true }).ClickAsync();
+            await Locator.Locator("table input").ClickAsync();         
+            await Frame.GetByText(option, new() { Exact = true }).ClickAsync();
         }
     }
 }

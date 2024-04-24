@@ -1,6 +1,6 @@
 using System;
 using Microsoft.Playwright;
-using PlaywrightTests.Framework.Pages;
+using Aumentum.Framework.Pages;
 
 namespace Aumentum.Framework.Pages
 {

@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.Playwright;
 
-namespace PlaywrightTests.Framework.Pages
+namespace Aumentum.Framework.Pages
 {
     public class RPAMainPage : BasePage
     {
@@ -13,6 +13,8 @@ namespace PlaywrightTests.Framework.Pages
         }
         private ILocator AddNewLand => _page.GetByText("Add New");
 
+        private ILocator AddNewBuilding => _page.Locator("#ctl00_ContentPlaceHolder_pvAppraisalSite_uc_pvBuildings_uc_dtgBuildingMain_ctl00_ctl02_ctl00_btnAddBuilding");
+
         public Table LegalPartyTable
         {
             get
@@ -21,25 +23,32 @@ namespace PlaywrightTests.Framework.Pages
             }
         }
 
-        public async Task GoTab(string tab)
+        public async Task GoTabAsync(string tab)
         {
             await _page.GetByRole(AriaRole.Link, new() { Name = tab }).ClickAsync();
         }
 
-        public async Task GoSubTab(string subTab)
+        public async Task GoSubTabAsync(string subTab)
         {
             await _page.GetByRole(AriaRole.Link, new() { Name = subTab, Exact = true }).ClickAsync();
         }
         
-        public async Task<LandFrame> OpenNewLand()
+        public async Task<LandFrame> OpenNewLandAsync()
         {
-
             await AddNewLand.ClickAsync();
             var landFrame = new LandFrame(_page, _page.FrameLocator("//iframe[contains(@name,'ctl00_ContentPlaceHolder_RadWindowManager')]"));
             return landFrame;
         }
 
-        internal async Task Save()
+        public async Task<BuildingFrame> OpenNewBuildingAsync()
+        {
+
+            await AddNewBuilding.ClickAsync();
+            var buildingFrame = new BuildingFrame(_page, _page.FrameLocator("//iframe[contains(@name,'ctl00_ContentPlaceHolder_RadWindowManager')]"));
+            return buildingFrame;
+        }
+
+        internal async Task SaveAsync()
         {
             await _page.GetByRole(AriaRole.Button, new() { Name = "Save" }).ClickAsync();
         }

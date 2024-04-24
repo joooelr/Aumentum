@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
-using PlaywrightTests.Framework.Pages;
+using Aumentum.Framework.Pages;
 using NUnit.Framework;
 using System;
 using System.Threading.Channels;
@@ -11,10 +11,10 @@ namespace PlaywrightTests;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]
-public class Tests : PageTest
+public partial class PropertyCharacteristicsLand : PageTest
 {
     [Test]
-    public async Task RPAAddingNewLand()
+    public async Task AddingNewLand()
     {
         var urlBase = Environment.GetEnvironmentVariable("URLDEV");
         var user = Environment.GetEnvironmentVariable("UserDev");
@@ -37,9 +37,9 @@ public class Tests : PageTest
         var homePage = await loginPage.Login(user, password);
         var httpPage = await homePage.NavigateTo<HttpPage>("Valuation > Property Characteristics");
         var  rpaMainPage = await httpPage.OpenPin(pin);
-        await rpaMainPage.GoTab("Appraisal Site");
-        await rpaMainPage.GoSubTab("Land");
-        var landFrame = await rpaMainPage.OpenNewLand();
+        await rpaMainPage.GoTabAsync("Appraisal Site");
+        await rpaMainPage.GoSubTabAsync("Land");
+        var landFrame = await rpaMainPage.OpenNewLandAsync();
         await landFrame.LandName.FillAsync(landName);
         await landFrame.LandType.SelectOptionFrame(landType);
         await landFrame.Topography.SelectOptionFrame(topography);
@@ -54,7 +54,7 @@ public class Tests : PageTest
         rpaMainPage = await landFrame.OK();
         await Expect(rpaMainPage.LegalPartyTable.Find(landName, 6)).ToHaveTextAsync(landType);
         await Expect(rpaMainPage.LegalPartyTable.Find(landName, 8)).ToHaveTextAsync(unitOfMeasure);
-        await rpaMainPage.Save();
+        await rpaMainPage.SaveAsync();
         await rpaMainPage.PerformAction<HomePage>("Close");
     }
 }

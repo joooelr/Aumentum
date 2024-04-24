@@ -1,29 +1,18 @@
 using Microsoft.Playwright;
 
-namespace PlaywrightTests.Framework.Pages
+namespace Aumentum.Framework.Pages
 {
-    public class Table
-    {        
-
-        private IEnumerable<string> _footers;
-        public ILocator _tableLocator;
-        private IPage _page;     
-
-        private IFrameLocator _frame;
-
-        public Table(IPage page, ILocator tableLocator)
+    public class Table : UITableElement
+    {
+        public Table(IPage page, ILocator locator) : base(page, locator)
         {
-            _tableLocator = tableLocator;
-            _page = page;
         }
 
-        public Table(IFrameLocator frame, ILocator tableLocator)
+        public Table(IFrameLocator frame, ILocator locator) : base(frame, locator)
         {
-            _tableLocator = tableLocator;
-            _frame = frame;
         }
 
-        public ILocator Rows => _tableLocator.Locator("tr");
+        public ILocator Rows => Locator.Locator("tr");
 
         public ILocator Find(string criteria, int columnIndex)
         {   

@@ -1,24 +1,15 @@
 using Microsoft.Playwright;
 
-namespace PlaywrightTests.Framework.Pages
+namespace Aumentum.Framework.Pages
 {
-    public class Row
+    public class Row : UITableElement
     {
- 
-        private ILocator _rowLocator;
-        private IPage _page;     
-        private IFrameLocator _frame;
-
-        public Row(IPage page, ILocator rowLocator)
+        public Row(IPage page, ILocator locator) : base(page, locator)
         {
-            _rowLocator = rowLocator;
-            _page = page;
         }
 
-        public Row(IFrameLocator frame, ILocator rowLocator)
+        public Row(IFrameLocator frame, ILocator locator) : base(frame, locator)
         {
-            _rowLocator = rowLocator;
-            _frame = frame;
         }
     }
 }

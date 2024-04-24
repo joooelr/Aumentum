@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.Playwright;
 
-namespace PlaywrightTests.Framework.Pages
+namespace Aumentum.Framework.Pages
 {
     public class HttpPage : BasePage
     {

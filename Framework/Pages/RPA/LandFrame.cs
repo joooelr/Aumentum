@@ -1,8 +1,7 @@
 using System.Threading.Tasks;
-using PlaywrightTests.Framework.Pages;
 using Microsoft.Playwright;
 
-namespace PlaywrightTests.Framework.Pages
+namespace Aumentum.Framework.Pages
 {
     public class LandFrame
     {

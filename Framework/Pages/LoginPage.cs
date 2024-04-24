@@ -1,5 +1,5 @@
 using Microsoft.Playwright;
-namespace PlaywrightTests.Framework.Pages
+namespace Aumentum.Framework.Pages
 {
     public class LoginPage : BasePage
     {
@@ -11,6 +11,7 @@ namespace PlaywrightTests.Framework.Pages
         }
 
         private ILocator Username => _page.Locator("#txtUserName");
+
         private ILocator Password => _page.Locator("#txtPassword");
 
         private ILocator BtnLogin => _page.Locator("#btnLogin");

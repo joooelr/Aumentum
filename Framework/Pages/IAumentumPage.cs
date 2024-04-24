@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PlaywrightTests.Framework.Pages
+namespace Aumentum.Framework.Pages
 {
     public interface IAumentumPage
     {

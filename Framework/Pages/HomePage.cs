@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Aumentum.Framework.Pages;
 using Microsoft.Playwright;
 
-namespace PlaywrightTests.Framework.Pages
+namespace Aumentum.Framework.Pages
 {
     public class HomePage : BasePage
     {
