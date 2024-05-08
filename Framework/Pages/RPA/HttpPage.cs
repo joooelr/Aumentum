@@ -25,7 +25,8 @@ namespace Aumentum.Framework.Pages
             await SearchButton.ClickAsync();
             await ResultsTable.Check(pin);
             await NextButton.ClickAsync();
-            return new RPAMainPage(_page);
+            var page = PageFactory.Create<RPAMainPage>(_page);
+            return page == null ? throw new Exception("Page is null") : page;
        }       
     }
 }

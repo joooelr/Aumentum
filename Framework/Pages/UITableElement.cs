@@ -1,6 +1,4 @@
 using Microsoft.Playwright;
-using System;
-using System.Collections.Generic;
 namespace Aumentum.Framework.Pages
 {
     public abstract class UITableElement : IPageElement
@@ -9,16 +7,16 @@ namespace Aumentum.Framework.Pages
         public IPage Page { get; }
         public IFrameLocator Frame { get; }
 
-        protected UITableElement(IPage page, ILocator locator)
-        {
-            Locator = locator;
+        protected UITableElement(IPage? page, ILocator locator)
+        {            
             Page = page;
+            Locator = locator;
         }
 
         protected UITableElement(IFrameLocator frame, ILocator locator)
         {
             Locator = locator;
             Frame = frame;
-        }
+        }        
     }
 }
