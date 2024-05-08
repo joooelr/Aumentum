@@ -12,7 +12,7 @@
       <URLDEV>https://vswebmipor01.manatron.com/CA-Riverside-Dev-SCL</URLDEV>
       <UserDev>Joelm</UserDev>
       <PasswordDev>a</PasswordDev>
-      <URL>https://x-ca-riv-static-main-1.aws.aumentumtech.com/Aumentum/</URL>
+      <URL>https://x-ca-riv-static-main-1.aws.aumentumtech.com/Aumentum</URL>
       <User>AutoAdmin</User>
       <Password>AutoAdmin</Password>
     </EnvironmentVariables>

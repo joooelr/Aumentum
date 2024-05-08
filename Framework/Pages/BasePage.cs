@@ -5,7 +5,6 @@ namespace Aumentum.Framework.Pages
 {
     public class BasePage : IAumentumPage
     {
-        private string location = string.Empty;
         private IPage _page;
 
         public BasePage(IPage page)
@@ -22,20 +21,14 @@ namespace Aumentum.Framework.Pages
             }
 
             var page = PageFactory.Create<T>(_page);
-            return Task.FromResult(page);
+            return page == null ? throw new Exception("Page is null") : Task.FromResult(page);
         }  
 
         public virtual Task<T> PerformAction<T>(string actionName) where T : IAumentumPage
         {
             _page.GetByRole(AriaRole.Table, new() { Name = actionName }).ClickAsync();
             var page = PageFactory.Create<T>(_page);
-            return Task.FromResult(page);
+            return page == null ? throw new Exception("Page is null") : Task.FromResult(page);
         }
-
-        public string Title => "Title";
-
-        public string Location =>   "Location";
-
-        public string Url => "WebUI/Framework/homepage.aspx";
     }
 }

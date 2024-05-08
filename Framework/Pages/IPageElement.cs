@@ -1,6 +1,4 @@
 using Microsoft.Playwright;
-using System;
-using System.Collections.Generic;
 
 namespace Aumentum.Framework.Pages
 {

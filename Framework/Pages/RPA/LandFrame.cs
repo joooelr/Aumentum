@@ -37,10 +37,9 @@ namespace Aumentum.Framework.Pages
 
         public async Task AddNew() => await _frameLocator.GetByRole(AriaRole.Cell, new() { Name = "Add New", Exact = true }).Locator("span").Nth(1).ClickAsync();
 
-        public async Task<RPAMainPage> OK()
+        public async Task OK()
         {
             await _frameLocator.GetByRole(AriaRole.Button, new() { Name = "OK" }).ClickAsync(); 
-            return new RPAMainPage(_page); 
         }
     }
 }
