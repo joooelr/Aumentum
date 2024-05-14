@@ -22,7 +22,7 @@ namespace Aumentum.Framework.Pages
             await Password.FillAsync(password);
             await BtnLogin.ClickAsync();
             var page = Aumentum.Framework.Pages.PageFactory.Create<HomePage>(_page);
-            return page; 
+            return page == null ? throw new Exception("Page is null") : page; 
         }
     }
 }

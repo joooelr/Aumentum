@@ -20,22 +20,17 @@ namespace Aumentum.Framework.Pages
             {
                 _page.GetByRole(AriaRole.Link, new() { Name = i }).ClickAsync();
             }
-
-            var page = PageFactory.Create<T>(_page);
-            return Task.FromResult(page);
+            
+            var page = PageFactory.Create<T>(_page);            
+            _page.WaitForLoadStateAsync();
+            return page == null ? throw new Exception("Page is null") : Task.FromResult(page);
         }  
 
         public virtual Task<T> PerformAction<T>(string actionName) where T : IAumentumPage
         {
             _page.GetByRole(AriaRole.Table, new() { Name = actionName }).ClickAsync();
             var page = PageFactory.Create<T>(_page);
-            return Task.FromResult(page);
+            return page == null ? throw new Exception("Page is null") : Task.FromResult(page);
         }
-
-        public string Title => "Title";
-
-        public string Location =>   "Location";
-
-        public string Url => "WebUI/Framework/homepage.aspx";
     }
 }
