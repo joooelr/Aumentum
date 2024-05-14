@@ -51,10 +51,14 @@ public partial class PropertyCharacteristicsLand : PageTest
         await landFrame.UnitOfMeasure.SelectOptionFrame(unitOfMeasure);
         await landFrame.InsertButton.ClickAsync();
         await landFrame.ChangeReason.SelectOptionFrame(changeReason);
-        rpaMainPage = await landFrame.OK();
+        await landFrame.OK();
         await Expect(rpaMainPage.LegalPartyTable.Find(landName, 6)).ToHaveTextAsync(landType);
         await Expect(rpaMainPage.LegalPartyTable.Find(landName, 8)).ToHaveTextAsync(unitOfMeasure);
         await rpaMainPage.SaveAsync();
+        await rpaMainPage.LegalPartyTable.DeleteRow(landName);
+        var confirmDeletionFrame = rpaMainPage.ConfirmDeletionFrame;
+        await confirmDeletionFrame.ChangeReason.SelectOptionFrame(changeReason);
+        await confirmDeletionFrame.OK();
         await rpaMainPage.PerformAction<HomePage>("Close");
     }
 }

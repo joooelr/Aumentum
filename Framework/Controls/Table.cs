@@ -24,5 +24,10 @@ namespace Aumentum.Framework.Pages
         {            
             await Rows.Locator(":scope", new() { HasText = criteria }).Locator(".a-checkbox").ClickAsync();
         }
+
+        public async Task DeleteRow(string criteria)
+        {   
+            await Rows.Locator(":scope", new() { HasText = criteria }).Locator("[title='Delete']").ClickAsync();
+        }
     }
 }
