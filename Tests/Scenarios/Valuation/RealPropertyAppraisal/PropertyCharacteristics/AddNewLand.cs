@@ -41,24 +41,25 @@ public partial class PropertyCharacteristicsLand : PageTest
         await rpaMainPage.GoSubTabAsync("Land");
         var landFrame = await rpaMainPage.OpenNewLandAsync();
         await landFrame.LandName.FillAsync(landName);
-        await landFrame.LandType.SelectOptionFrame(landType);
-        await landFrame.Topography.SelectOptionFrame(topography);
-        await landFrame.Zoning.SelectOptionFrame(zoning);
-        await landFrame.SiteRating.SelectOptionFrame(siteRating);
+        await landFrame.LandType.SelectOptionFrameAsync(landType);
+        await landFrame.Topography.SelectOptionFrameAsync(topography);
+        await landFrame.Zoning.SelectOptionFrameAsync(zoning, 10000);
+        await landFrame.SiteRating.SelectOptionFrameAsync(siteRating);
         await landFrame.AddNew();
         await landFrame.SizeType.SelectOptionFrame(sizeType);
         await landFrame.SizeValue.FillAsync(sizeValue);       
         await landFrame.UnitOfMeasure.SelectOptionFrame(unitOfMeasure);
         await landFrame.InsertButton.ClickAsync();
-        await landFrame.ChangeReason.SelectOptionFrame(changeReason);
+        await landFrame.ChangeReason.SelectOptionFrameAsync(changeReason);
         await landFrame.OK();
         await Expect(rpaMainPage.LegalPartyTable.Find(landName, 6)).ToHaveTextAsync(landType);
         await Expect(rpaMainPage.LegalPartyTable.Find(landName, 8)).ToHaveTextAsync(unitOfMeasure);
         await rpaMainPage.SaveAsync();
         await rpaMainPage.LegalPartyTable.DeleteRow(landName);
         var confirmDeletionFrame = rpaMainPage.ConfirmDeletionFrame;
-        await confirmDeletionFrame.ChangeReason.SelectOptionFrame(changeReason);
+        await confirmDeletionFrame.ChangeReason.SelectOptionFrameAsync(changeReason);
         await confirmDeletionFrame.OK();
+        await rpaMainPage.SaveAsync();
         await rpaMainPage.PerformAction<HomePage>("Close");
     }
 }
