@@ -19,13 +19,13 @@ namespace Aumentum.Framework.Pages
 
         public ConfirmDeletionFrame ConfirmDeletionFrame => new ConfirmDeletionFrame(_page, _page.FrameLocator("iframe[name=\"Areyousureyouwanttodeletethisitem\\?\"]"));
 
-        public async Task GoTabAsync(string tab) => await _page.GetByRole(AriaRole.Link, new() { Name = tab }).ClickAsync(new() { Timeout = 12000});
+        public async Task GoTabAsync(string tab) => await _page.GetByRole(AriaRole.Link, new() { Name = tab }).ClickAsync();
 
-        public async Task GoSubTabAsync(string subTab) => await _page.GetByRole(AriaRole.Link, new() { Name = subTab, Exact = true }).ClickAsync(new() { Timeout = 12000});
+        public async Task GoSubTabAsync(string subTab) => await _page.GetByRole(AriaRole.Link, new() { Name = subTab, Exact = true }).ClickAsync();
 
         public async Task<LandFrame> OpenNewLandAsync()
         {
-            await AddNewLand.ClickAsync(new() { Timeout = 12000});
+            await AddNewLand.ClickAsync();
             var landFrame = new LandFrame(_page, _page.FrameLocator("//iframe[contains(@name,'ctl00_ContentPlaceHolder_RadWindowManager')]"));
             return landFrame;
         }
@@ -34,10 +34,13 @@ namespace Aumentum.Framework.Pages
         {
 
             await AddNewBuilding.ClickAsync();
-            var buildingFrame = new BuildingFrame(_page, _page.FrameLocator("//iframe[contains(@name,'ctl00_ContentPlaceHolder_RadWindowManager')]"));
+            var buildingFrame = new BuildingFrame(_page, _page.FrameLocator("table > tbody > tr.rwContentRow > td.rwWindowContent.rwExternalContent > iframe"));
             return buildingFrame;
         }
 
-        internal async Task SaveAsync() => await _page.GetByRole(AriaRole.Button, new() { Name = "Save" }).ClickAsync();
+        public async Task SaveAsync() => await _page.GetByRole(AriaRole.Button, new() { Name = "Save" }).ClickAsync();
+
+        public async Task Unlock() => await _page.Locator("#ctl00_ContextBarPlaceHolder_ucRPAContextBar_btnUnlock").ClickAsync();
+        public async Task<bool> UnlockExist() => await _page.IsVisibleAsync("ctl00_ContextBarPlaceHolder_ucRPAContextBar_btnUnlock");
     }
 }

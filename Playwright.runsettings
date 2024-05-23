@@ -20,7 +20,8 @@
   <!-- Playwright -->  
   <Playwright>
     <BrowserName>chromium</BrowserName>
-    <ExpectTimeout>180000</ExpectTimeout>
+    <Timeout>180000</Timeout>
+    <ExpectTimeout>10000</ExpectTimeout>
     <LaunchOptions>
       <Headless>false</Headless>
       <Channel>msedge</Channel>

@@ -12,10 +12,12 @@ namespace Aumentum.Framework.Pages
         {
         }
 
-        public async Task SelectOptionFrame(string option)
+        public async Task SelectOptionFrameAsync(string option, int timeout = 3000)
         {   
             await Locator.Locator("a").ClickAsync();         
-            await Frame.GetByText(option, new() { Exact = true }).ClickAsync();
+            await Frame.GetByText(option, new() { Exact = true }).ClickAsync(new() { 
+                Timeout = timeout
+            });
         }
     }
 }
